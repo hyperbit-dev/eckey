@@ -1,6 +1,6 @@
 {
-  "name": "eckey",
-  "version": "1.0.1",
+  "name": "@hyperbitjs/eckey",
+  "version": "0.0.1",
   "description": "Handle private key and public keys associated with elliptic curve cryptography. Used with crypto currencies such as Bitcoin, Litecoin, Dogecoin, etc. Works in both Node.js and the browser.",
   "keywords": [
     "cryptography",
@@ -20,16 +20,27 @@
     "standard": "6.x"
   },
   "repository": {
-    "url": "https://github.com/cryptocoinjs/eckey",
+    "url": "https://github.com/hyperbit-dev/eckey",
     "type": "git"
   },
   "main": "./lib/eckey.js",
   "dependencies": {
+    "create-hash": "^1.2.0",
     "secp256k1": "^3.0.1"
   },
   "scripts": {
     "lint": "standard",
     "test": "standard && mocha --ui bdd",
     "unit": "mocha --ui bdd"
+  },
+  "overrides": {
+    "ajv": "^6.12.3",
+    "debug": "^4.3.1",
+    "diff": "^3.5.0",
+    "growl": "^1.10.0",
+    "minimatch": "^3.0.5",
+    "minimist": "^1.2.6",
+    "ms": "^2.0.0",
+    "shelljs": "^0.8.5"
   }
 }
