@@ -2,9 +2,9 @@ os: linux
 dist: xenial
 language: node_js
 node_js:
-  - "10"
-  - "12"
-  - "14"
+  - '10'
+  - '12'
+  - '14'
 addons:
   apt:
     sources:
@@ -24,9 +24,9 @@ jobs:
   fast_finish: true
   include:
     - os: linux
-      node_js: "14"
+      node_js: '14'
       env: CXX=g++-4.8 TEST_SUITE=lint
     - os: linux
-      node_js: "14"
+      node_js: '14'
       env: CXX=clang++ TEST_SUITE=unit
 script: npm run $TEST_SUITE
