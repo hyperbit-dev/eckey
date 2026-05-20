@@ -1,46 +1,76 @@
 {
   "name": "@hyperbitjs/eckey",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "type": "module",
   "description": "Handle private key and public keys associated with elliptic curve cryptography. Used with crypto currencies such as Bitcoin, Litecoin, Dogecoin, etc. Works in both Node.js and the browser.",
   "keywords": [
     "cryptography",
     "crypto",
     "bitcoin",
     "litecoin",
-    "elliptical",
+    "elliptic",
     "curve",
     "digital",
     "sign",
     "signing"
   ],
-  "devDependencies": {
-    "crypto-browserify": "^3.2.5",
-    "mocha": "2.x",
-    "secure-random": "^1.0.0",
-    "standard": "6.x"
-  },
+  "license": "MIT",
+  "homepage": "https://github.com/hyperbit-dev/eckey",
   "repository": {
     "url": "https://github.com/hyperbit-dev/eckey",
     "type": "git"
   },
-  "main": "./lib/eckey.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
   "dependencies": {
-    "create-hash": "^1.2.0",
-    "secp256k1": "^5.0.1"
+    "@noble/hashes": "^2.2.0",
+    "@noble/secp256k1": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitest/coverage-v8": "^4.1.6",
+    "eslint": "^8.56.0",
+    "prettier": "^3.0.3",
+    "secure-random": "^1.1.1",
+    "typescript": "^5.3.3",
+    "vite": "^8.0.13",
+    "vite-plugin-dts": "^5.0.1",
+    "vitest": "^4.1.6"
   },
   "scripts": {
-    "lint": "standard",
-    "test": "standard && mocha --ui bdd",
-    "unit": "mocha --ui bdd"
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "dev": "vite build --watch",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --coverage",
+    "validate": "npm run type-check && npm run lint && npm run test",
+    "prepublishOnly": "npm run build && npm run validate"
   },
-  "overrides": {
-    "ajv": "^6.12.3",
-    "debug": "^4.3.1",
-    "diff": "^3.5.0",
-    "growl": "^1.10.0",
-    "minimatch": "^3.0.5",
-    "minimist": "^1.2.6",
-    "ms": "^2.0.0",
-    "shelljs": "^0.8.5"
+  "publishConfig": {
+    "access": "public"
   }
 }
